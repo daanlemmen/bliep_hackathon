@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2A7608A1604ABA8006E8093 /* PDKeychainBindings.h in Sources */ = {isa = PBXBuildFile; fileRef = E2A760841604AAD1006E8093 /* PDKeychainBindings.h */; };
+		E2A7608B1604ABA8006E8093 /* PDKeychainBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A760851604AAD1006E8093 /* PDKeychainBindings.m */; };
+		E2A7608C1604ABA8006E8093 /* PDKeychainBindingsController.h in Sources */ = {isa = PBXBuildFile; fileRef = E2A760861604AAD1006E8093 /* PDKeychainBindingsController.h */; };
+		E2A7608D1604ABA8006E8093 /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A760871604AAD1006E8093 /* PDKeychainBindingsController.m */; };
 		FB378C041603D66B009286B4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB378C031603D66B009286B4 /* QuartzCore.framework */; };
 		FB378C081603EAF4009286B4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FB378C061603EAF4009286B4 /* Icon.png */; };
 		FB378C091603EAF4009286B4 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB378C071603EAF4009286B4 /* Icon@2x.png */; };
@@ -40,6 +44,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E2A760841604AAD1006E8093 /* PDKeychainBindings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDKeychainBindings.h; sourceTree = "<group>"; };
+		E2A760851604AAD1006E8093 /* PDKeychainBindings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDKeychainBindings.m; sourceTree = "<group>"; };
+		E2A760861604AAD1006E8093 /* PDKeychainBindingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDKeychainBindingsController.h; sourceTree = "<group>"; };
+		E2A760871604AAD1006E8093 /* PDKeychainBindingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDKeychainBindingsController.m; sourceTree = "<group>"; };
 		FB378C031603D66B009286B4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FB378C061603EAF4009286B4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		FB378C071603EAF4009286B4 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -107,6 +115,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E2A760891604AADA006E8093 /* KeychainBindings */ = {
+			isa = PBXGroup;
+			children = (
+				E2A760841604AAD1006E8093 /* PDKeychainBindings.h */,
+				E2A760851604AAD1006E8093 /* PDKeychainBindings.m */,
+				E2A760861604AAD1006E8093 /* PDKeychainBindingsController.h */,
+				E2A760871604AAD1006E8093 /* PDKeychainBindingsController.m */,
+			);
+			name = KeychainBindings;
+			sourceTree = "<group>";
+		};
 		FB6DE1641603B24B00CE1FA0 /* MKNetworkKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,7 +201,6 @@
 		FB70E66F16034EBB0072C926 /* bliep */ = {
 			isa = PBXGroup;
 			children = (
-				FB6DE1641603B24B00CE1FA0 /* MKNetworkKit */,
 				FB70E67816034EBB0072C926 /* AppDelegate.h */,
 				FB70E67916034EBB0072C926 /* AppDelegate.m */,
 				FB70E68116034EBC0072C926 /* ViewController.h */,
@@ -197,6 +215,8 @@
 				FB378C0D1603F5E5009286B4 /* FirstTimeUseViewController.h */,
 				FB378C0E1603F5E5009286B4 /* FirstTimeUseViewController.m */,
 				FB378C0F1603F5E6009286B4 /* FirstTimeUseViewController.xib */,
+				FB6DE1641603B24B00CE1FA0 /* MKNetworkKit */,
+				E2A760891604AADA006E8093 /* KeychainBindings */,
 				FB70E67016034EBB0072C926 /* Supporting Files */,
 			);
 			path = bliep;
@@ -302,6 +322,10 @@
 				FB6DE1851603B28200CE1FA0 /* BliepJSONEngine.m in Sources */,
 				FB6DE18C1603B5CB00CE1FA0 /* BliepJSONOperation.m in Sources */,
 				FB378C101603F5E6009286B4 /* FirstTimeUseViewController.m in Sources */,
+				E2A7608A1604ABA8006E8093 /* PDKeychainBindings.h in Sources */,
+				E2A7608B1604ABA8006E8093 /* PDKeychainBindings.m in Sources */,
+				E2A7608C1604ABA8006E8093 /* PDKeychainBindingsController.h in Sources */,
+				E2A7608D1604ABA8006E8093 /* PDKeychainBindingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "BliepAPI.h"
 #import "BliepJSONEngine.h"
 #import "BliepJSONOperation.h"
+#import "PDKeychainBindings.h"
 
 @interface BliepAPI()
 @property (nonatomic, strong) BliepJSONEngine *networkEngine;
@@ -79,10 +80,10 @@
     [self.networkEngine enqueueOperation:operation];
 }
 +(NSString *)getTokenFromUserDefaults {
-    return [[NSUserDefaults standardUserDefaults] valueForKey:@"bliep_token"];
+    return [[PDKeychainBindings sharedKeychainBindings] objectForKey:@"bliep_token"];
 }
 +(BOOL)setToken:(NSString *)token {
-    [[NSUserDefaults standardUserDefaults] setValue:token forKey:@"bliep_token"];
+    [[PDKeychainBindings sharedKeychainBindings] setObject:token forKey:@"bliep_token"];
     return [[NSUserDefaults standardUserDefaults] synchronize];
 }
 +(NSDictionary *)getAccountInfoFromUserDefaults {
