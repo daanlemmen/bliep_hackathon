@@ -26,8 +26,8 @@
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:logoutButton]];
     
     stateLabel.font = [UIFont fontWithName:@"Museo" size:17];
-    balanceLabel.font = [UIFont fontWithName:@"Museo" size:17];
-    calltimeLabel.font = [UIFont fontWithName:@"Museo" size:17];
+    balanceLabel.font = [UIFont fontWithName:@"Museo" size:48];
+    calltimeLabel.font = [UIFont fontWithName:@"Museo" size:30];
     
     [[pauseButton titleLabel] setFont:[UIFont fontWithName:@"Museo" size:17]];
     [[bliepButton titleLabel] setFont:[UIFont fontWithName:@"Museo" size:17]];

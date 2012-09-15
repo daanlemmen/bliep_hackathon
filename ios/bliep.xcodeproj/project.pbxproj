@@ -10,6 +10,8 @@
 		E2222E051604DDB50050E7D8 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2222E031604DCE60050E7D8 /* LoadingView.m */; };
 		E2222E081604E0C30050E7D8 /* Logout.png in Resources */ = {isa = PBXBuildFile; fileRef = E2222E061604E0C30050E7D8 /* Logout.png */; };
 		E2222E091604E0C30050E7D8 /* Logout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2222E071604E0C30050E7D8 /* Logout@2x.png */; };
+		E2222E0D1604E39C0050E7D8 /* InfoScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E2222E0B1604E39C0050E7D8 /* InfoScreen.png */; };
+		E2222E0E1604E39C0050E7D8 /* InfoScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2222E0C1604E39C0050E7D8 /* InfoScreen@2x.png */; };
 		F27FE1571604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F27FE0D21604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.m */; };
 		F27FE1581604D83100FF4706 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = F27FE0D41604D83100FF4706 /* NSData+Base64.m */; };
 		F27FE1591604D83100FF4706 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = F27FE0D61604D83100FF4706 /* NSDate+RFC1123.m */; };
@@ -50,6 +52,8 @@
 		E2222E031604DCE60050E7D8 /* LoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		E2222E061604E0C30050E7D8 /* Logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logout.png; sourceTree = "<group>"; };
 		E2222E071604E0C30050E7D8 /* Logout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logout@2x.png"; sourceTree = "<group>"; };
+		E2222E0B1604E39C0050E7D8 /* InfoScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoScreen.png; sourceTree = "<group>"; };
+		E2222E0C1604E39C0050E7D8 /* InfoScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InfoScreen@2x.png"; sourceTree = "<group>"; };
 		F27FE0D11604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
 		F27FE0D21604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		F27FE0D31604D83100FF4706 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 			children = (
 				E2222E061604E0C30050E7D8 /* Logout.png */,
 				E2222E071604E0C30050E7D8 /* Logout@2x.png */,
+				E2222E0B1604E39C0050E7D8 /* InfoScreen.png */,
+				E2222E0C1604E39C0050E7D8 /* InfoScreen@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -345,6 +351,8 @@
 				FB378C131603FA89009286B4 /* museo700regular.ttf in Resources */,
 				E2222E081604E0C30050E7D8 /* Logout.png in Resources */,
 				E2222E091604E0C30050E7D8 /* Logout@2x.png in Resources */,
+				E2222E0D1604E39C0050E7D8 /* InfoScreen.png in Resources */,
+				E2222E0E1604E39C0050E7D8 /* InfoScreen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

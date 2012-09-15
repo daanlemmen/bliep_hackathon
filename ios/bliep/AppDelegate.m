@@ -21,7 +21,7 @@
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     UIViewController *firstTime = [[FirstTimeUseViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
-    [navController.navigationBar setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:242.0f/255.0f green:252.0f/255.0f blue:0.0f alpha:1.0f]] forBarMetrics:UIBarMetricsDefault];
+    [navController.navigationBar setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:252.0f/255.0f green:242.0f/255.0f blue:0.0f alpha:1.0f]] forBarMetrics:UIBarMetricsDefault];
     if (![BliepAPI getTokenFromUserDefaults])
         self.window.rootViewController = firstTime;
     else
