@@ -21,6 +21,10 @@
 - (void)viewDidLoad
 {
     
+    UIButton *logoutButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, 90.0, 44.0)];
+    [logoutButton setImage:[UIImage imageNamed:@"Logout.png"] forState:UIControlStateNormal];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:logoutButton]];
+    
     stateLabel.font = [UIFont fontWithName:@"Museo" size:17];
     balanceLabel.font = [UIFont fontWithName:@"Museo" size:17];
     calltimeLabel.font = [UIFont fontWithName:@"Museo" size:17];
@@ -75,6 +79,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(IBAction)getAccountInfo:(id)sender {
     
     LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
@@ -125,6 +130,7 @@
         }
     }];
 }
+
 -(IBAction)pause:(id)sender {
     
     LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
@@ -169,6 +175,7 @@
      
     }];
 }
+
 -(IBAction)bliepplus:(id)sender {
     
     LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
@@ -191,4 +198,5 @@
      
     }];
 }
+
 @end
