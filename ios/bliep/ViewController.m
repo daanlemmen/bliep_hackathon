@@ -9,36 +9,15 @@
 #import "ViewController.h"
 #import "BliepAPI.h"
 #import <QuartzCore/QuartzCore.h>
+#import "LoadingView.h"
+
 @interface ViewController ()
-@property (nonatomic, strong) UIView *loadingView;
 @end
 
 @implementation ViewController
+
 @synthesize connectionData, connectionType;
--(void)showAndSetupLoadingView {
-    self.loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 230, 230)];
-    self.loadingView.center = self.view.center;
-    self.loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
-    self.loadingView.layer.cornerRadius = 20;
-    self.loadingView.layer.masksToBounds = YES;
-    UIActivityIndicatorView *activi = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    activi.frame = CGRectMake(97, 96, activi.frame.size.width, activi.frame.size.height);
-    [activi startAnimating];
-    [self.loadingView addSubview:activi];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 182, 190, 28)];
-    [label setFont:[UIFont boldSystemFontOfSize:36]];
-    label.backgroundColor = [UIColor clearColor];
-    label.textAlignment = UITextAlignmentCenter;
-    label.text = @"Laden...";
-    label.textColor = [UIColor whiteColor];
-    [self.loadingView addSubview:label];
-    
-    [self.view addSubview:self.loadingView];
-}
--(void)hideLoadingView {
-    [self.loadingView removeFromSuperview];
-}
+
 - (void)viewDidLoad
 {
     
@@ -97,7 +76,10 @@
     // Dispose of any resources that can be recreated.
 }
 -(IBAction)getAccountInfo:(id)sender {
-    [self showAndSetupLoadingView];
+    
+    LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    [self.view addSubview:loadingView];
+    
     [api getAccountInfoWithToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
         NSLog(@"%@", dict);
         BOOL succes = [[dict objectForKey:@"success"] boolValue];
@@ -137,12 +119,17 @@
                 [bliepplusButton setEnabled:NO];
             }
             [BliepAPI setAccountInfo:result];
-            [self hideLoadingView];
+            
+            [loadingView removeFromSuperview];
+            
         }
     }];
 }
 -(IBAction)pause:(id)sender {
-    [self showAndSetupLoadingView];
+    
+    LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    [self.view addSubview:loadingView];
+    
     __weak ViewController *weakSelf = self;
     [api setStateWithState:@"pause" andToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
         NSLog(@"%@", dict);
@@ -155,11 +142,16 @@
             [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"%d", [[dict objectForKey:@"error_code"] integerValue]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
             
         }
-        [weakSelf hideLoadingView];
+
+        [loadingView removeFromSuperview];
+    
     }];
 }
 -(IBAction)bliep:(id)sender {
-    [self showAndSetupLoadingView];
+    
+    LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    [self.view addSubview:loadingView];
+    
     __weak ViewController *weakSelf = self;
     [api setStateWithState:@"bliep" andToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
         NSLog(@"%@", dict);
@@ -172,11 +164,16 @@
             [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"%d", [[dict objectForKey:@"error_code"] integerValue]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
             
         }
-        [weakSelf hideLoadingView];
+     
+        [loadingView removeFromSuperview];
+     
     }];
 }
 -(IBAction)bliepplus:(id)sender {
-    [self showAndSetupLoadingView];
+    
+    LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    [self.view addSubview:loadingView];
+    
     __weak ViewController *weakSelf = self;
     [api setStateWithState:@"bliep-plus" andToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
         NSLog(@"%@", dict);
@@ -189,7 +186,9 @@
             [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"%d", [[dict objectForKey:@"error_code"] integerValue]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
             
         }
-        [weakSelf hideLoadingView];
+     
+        [loadingView removeFromSuperview];
+     
     }];
 }
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2222E051604DDB50050E7D8 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2222E031604DCE60050E7D8 /* LoadingView.m */; };
 		F27FE1571604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F27FE0D21604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.m */; };
 		F27FE1581604D83100FF4706 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = F27FE0D41604D83100FF4706 /* NSData+Base64.m */; };
 		F27FE1591604D83100FF4706 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = F27FE0D61604D83100FF4706 /* NSDate+RFC1123.m */; };
@@ -43,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E2222E021604DCE60050E7D8 /* LoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		E2222E031604DCE60050E7D8 /* LoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		F27FE0D11604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
 		F27FE0D21604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		F27FE0D31604D83100FF4706 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -122,7 +125,6 @@
 				F27FE09B1604D83100FF4706 /* MKNetworkKit */,
 				F27FE0F71604D83100FF4706 /* PDKeyChainBindingsController */,
 			);
-			name = Submodules;
 			path = Submodules;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -241,6 +243,8 @@
 				FB6DE18B1603B5CB00CE1FA0 /* BliepJSONOperation.m */,
 				FB6DE1831603B28200CE1FA0 /* BliepJSONEngine.h */,
 				FB6DE1841603B28200CE1FA0 /* BliepJSONEngine.m */,
+				E2222E021604DCE60050E7D8 /* LoadingView.h */,
+				E2222E031604DCE60050E7D8 /* LoadingView.m */,
 				FB378C0D1603F5E5009286B4 /* FirstTimeUseViewController.h */,
 				FB378C0E1603F5E5009286B4 /* FirstTimeUseViewController.m */,
 				FB378C0F1603F5E6009286B4 /* FirstTimeUseViewController.xib */,
@@ -345,6 +349,7 @@
 				F27FE1571604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				F27FE1581604D83100FF4706 /* NSData+Base64.m in Sources */,
 				F27FE1591604D83100FF4706 /* NSDate+RFC1123.m in Sources */,
+				E2222E051604DDB50050E7D8 /* LoadingView.m in Sources */,
 				F27FE15A1604D83100FF4706 /* NSDictionary+RequestEncoding.m in Sources */,
 				F27FE15B1604D83100FF4706 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				F27FE15C1604D83100FF4706 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
