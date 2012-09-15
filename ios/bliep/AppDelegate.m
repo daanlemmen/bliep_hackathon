@@ -21,6 +21,7 @@
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     UIViewController *firstTime = [[FirstTimeUseViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    [navController.navigationBar setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:242.0f/255.0f green:252.0f/255.0f blue:0.0f alpha:1.0f]] forBarMetrics:UIBarMetricsDefault];
     if (![BliepAPI getTokenFromUserDefaults])
         self.window.rootViewController = firstTime;
     else
@@ -54,6 +55,20 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end
