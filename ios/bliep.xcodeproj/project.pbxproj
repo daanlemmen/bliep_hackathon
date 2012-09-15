@@ -12,6 +12,7 @@
 		E2222E091604E0C30050E7D8 /* Logout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2222E071604E0C30050E7D8 /* Logout@2x.png */; };
 		E2222E0D1604E39C0050E7D8 /* InfoScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E2222E0B1604E39C0050E7D8 /* InfoScreen.png */; };
 		E2222E0E1604E39C0050E7D8 /* InfoScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2222E0C1604E39C0050E7D8 /* InfoScreen@2x.png */; };
+		E2222E111604F8370050E7D8 /* StateChangeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E2222E101604F8370050E7D8 /* StateChangeButton.m */; };
 		F27FE1571604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F27FE0D21604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.m */; };
 		F27FE1581604D83100FF4706 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = F27FE0D41604D83100FF4706 /* NSData+Base64.m */; };
 		F27FE1591604D83100FF4706 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = F27FE0D61604D83100FF4706 /* NSDate+RFC1123.m */; };
@@ -54,6 +55,8 @@
 		E2222E071604E0C30050E7D8 /* Logout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logout@2x.png"; sourceTree = "<group>"; };
 		E2222E0B1604E39C0050E7D8 /* InfoScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InfoScreen.png; sourceTree = "<group>"; };
 		E2222E0C1604E39C0050E7D8 /* InfoScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InfoScreen@2x.png"; sourceTree = "<group>"; };
+		E2222E0F1604F8370050E7D8 /* StateChangeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateChangeButton.h; sourceTree = "<group>"; };
+		E2222E101604F8370050E7D8 /* StateChangeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateChangeButton.m; sourceTree = "<group>"; };
 		F27FE0D11604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
 		F27FE0D21604D83100FF4706 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		F27FE0D31604D83100FF4706 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -136,6 +139,43 @@
 				E2222E0C1604E39C0050E7D8 /* InfoScreen@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		E2222E121604F8400050E7D8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FB6DE152160392F700CE1FA0 /* BliepAPI.h */,
+				FB6DE153160392F700CE1FA0 /* BliepAPI.m */,
+				FB6DE18A1603B5CB00CE1FA0 /* BliepJSONOperation.h */,
+				FB6DE18B1603B5CB00CE1FA0 /* BliepJSONOperation.m */,
+				FB6DE1831603B28200CE1FA0 /* BliepJSONEngine.h */,
+				FB6DE1841603B28200CE1FA0 /* BliepJSONEngine.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E2222E131604F84E0050E7D8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E2222E0F1604F8370050E7D8 /* StateChangeButton.h */,
+				E2222E101604F8370050E7D8 /* StateChangeButton.m */,
+				E2222E021604DCE60050E7D8 /* LoadingView.h */,
+				E2222E031604DCE60050E7D8 /* LoadingView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E2222E141604F8630050E7D8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FB70E68116034EBC0072C926 /* ViewController.h */,
+				FB70E68216034EBC0072C926 /* ViewController.m */,
+				FB70E68416034EBC0072C926 /* ViewController.xib */,
+				FB378C0D1603F5E5009286B4 /* FirstTimeUseViewController.h */,
+				FB378C0E1603F5E5009286B4 /* FirstTimeUseViewController.m */,
+				FB378C0F1603F5E6009286B4 /* FirstTimeUseViewController.xib */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		F27FE09A1604D83100FF4706 /* Submodules */ = {
@@ -253,20 +293,9 @@
 			children = (
 				FB70E67816034EBB0072C926 /* AppDelegate.h */,
 				FB70E67916034EBB0072C926 /* AppDelegate.m */,
-				FB70E68116034EBC0072C926 /* ViewController.h */,
-				FB70E68216034EBC0072C926 /* ViewController.m */,
-				FB70E68416034EBC0072C926 /* ViewController.xib */,
-				FB6DE152160392F700CE1FA0 /* BliepAPI.h */,
-				FB6DE153160392F700CE1FA0 /* BliepAPI.m */,
-				FB6DE18A1603B5CB00CE1FA0 /* BliepJSONOperation.h */,
-				FB6DE18B1603B5CB00CE1FA0 /* BliepJSONOperation.m */,
-				FB6DE1831603B28200CE1FA0 /* BliepJSONEngine.h */,
-				FB6DE1841603B28200CE1FA0 /* BliepJSONEngine.m */,
-				E2222E021604DCE60050E7D8 /* LoadingView.h */,
-				E2222E031604DCE60050E7D8 /* LoadingView.m */,
-				FB378C0D1603F5E5009286B4 /* FirstTimeUseViewController.h */,
-				FB378C0E1603F5E5009286B4 /* FirstTimeUseViewController.m */,
-				FB378C0F1603F5E6009286B4 /* FirstTimeUseViewController.xib */,
+				E2222E121604F8400050E7D8 /* Models */,
+				E2222E131604F84E0050E7D8 /* Views */,
+				E2222E141604F8630050E7D8 /* Controllers */,
 				F27FE09A1604D83100FF4706 /* Submodules */,
 				FB70E67016034EBB0072C926 /* Supporting Files */,
 			);
@@ -382,6 +411,7 @@
 				F27FE15F1604D83100FF4706 /* Reachability.m in Sources */,
 				F27FE1661604D83100FF4706 /* PDKeychainBindings.m in Sources */,
 				F27FE1671604D83100FF4706 /* PDKeychainBindingsController.m in Sources */,
+				E2222E111604F8370050E7D8 /* StateChangeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

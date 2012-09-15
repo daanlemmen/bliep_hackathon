@@ -29,10 +29,6 @@
     balanceLabel.font = [UIFont fontWithName:@"Museo" size:48];
     calltimeLabel.font = [UIFont fontWithName:@"Museo" size:30];
     
-    [[pauseButton titleLabel] setFont:[UIFont fontWithName:@"Museo" size:17]];
-    [[bliepButton titleLabel] setFont:[UIFont fontWithName:@"Museo" size:17]];
-    [[bliepplusButton titleLabel] setFont:[UIFont fontWithName:@"Museo" size:17]];
-    
     [super viewDidLoad];
     api = [[BliepAPI alloc] init];
     
@@ -42,17 +38,17 @@
     if (cachedData){
         stateLabel.text = [cachedData objectForKey:@"state"];
         if ([[cachedData objectForKey:@"state"] isEqualToString:@"pause"]) {
-            [pauseButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-            [bliepButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-            [bliepplusButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+            [pauseButton setHighlighted:YES];
+            [bliepButton setHighlighted:NO];
+            [bliepplusButton setHighlighted:NO];
         } else if ([[cachedData objectForKey:@"state"] isEqualToString:@"bliep"]) {
-            [pauseButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-            [bliepButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-            [bliepplusButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+             [pauseButton setHighlighted:NO];
+             [bliepButton setHighlighted:YES];
+             [bliepplusButton setHighlighted:NO];
         } else if ([[cachedData objectForKey:@"state"] isEqualToString:@"bliep-plus"]) {
-            [pauseButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-            [bliepButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-            [bliepplusButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [pauseButton setHighlighted:NO];
+            [bliepButton setHighlighted:NO];
+            [bliepplusButton setHighlighted:YES];
         }
         balanceLabel.text = [NSString stringWithFormat:@"€ %@", [cachedData objectForKey:@"balance"]];
         NSString *seconds = [NSString stringWithFormat:@"%@", [[cachedData objectForKey:@"calltime"] objectForKey:@"seconds"]];
@@ -93,36 +89,23 @@
             NSDictionary *result = [dict objectForKey:@"result"];
             stateLabel.text = [result objectForKey:@"state"];
             if ([[result objectForKey:@"state"] isEqualToString:@"pause"]) {
-                [pauseButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-                [bliepButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-                [bliepplusButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+                [pauseButton setHighlighted:YES];
+                [bliepButton setHighlighted:NO];
+                [bliepplusButton setHighlighted:NO];
             } else if ([[result objectForKey:@"state"] isEqualToString:@"bliep"]) {
-                [pauseButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-                [bliepButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-                [bliepplusButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+                [pauseButton setHighlighted:NO];
+                [bliepButton setHighlighted:YES];
+                [bliepplusButton setHighlighted:NO];
             } else if ([[result objectForKey:@"state"] isEqualToString:@"bliep-plus"]) {
-                [pauseButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-                [bliepButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-                [bliepplusButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                [pauseButton setHighlighted:NO];
+                [bliepButton setHighlighted:NO];
+                [bliepplusButton setHighlighted:YES];
             }
             balanceLabel.text = [NSString stringWithFormat:@"€ %@", [result objectForKey:@"balance"]];
             NSString *seconds = [NSString stringWithFormat:@"%@", [[result objectForKey:@"calltime"] objectForKey:@"seconds"]];
             if ([seconds length] == 1)
                 seconds = [@"0" stringByAppendingString:seconds];
             calltimeLabel.text = [NSString stringWithFormat:@"%@:%@", [[result objectForKey:@"calltime"] objectForKey:@"minutes"], seconds];
-            if ([[result objectForKey:@"state"] isEqualToString:@"pause"]){
-                [pauseButton setEnabled:NO];
-                [bliepButton setEnabled:YES];
-                [bliepplusButton setEnabled:YES];
-            }else if ([[result objectForKey:@"state"] isEqualToString:@"bliep"]){
-                [pauseButton setEnabled:YES];
-                [bliepButton setEnabled:NO];
-                [bliepplusButton setEnabled:YES];
-            }else if ([[result objectForKey:@"state"] isEqualToString:@"bliep-plus"]){
-                [pauseButton setEnabled:YES];
-                [bliepButton setEnabled:YES];
-                [bliepplusButton setEnabled:NO];
-            }
             [BliepAPI setAccountInfo:result];
             
             [loadingView removeFromSuperview];
