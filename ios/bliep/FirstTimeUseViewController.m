@@ -9,6 +9,7 @@
 #import "FirstTimeUseViewController.h"
 
 #import "ViewController.h"
+#import "LoadingView.h"
 #import <QuartzCore/QuartzCore.h>
 @interface FirstTimeUseViewController () {
     BliepAPI *api;
@@ -17,30 +18,7 @@
 @end
 
 @implementation FirstTimeUseViewController
--(void)showAndSetupLoadingView {
-    self.loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 230, 230)];
-    self.loadingView.center = self.view.center;
-    self.loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
-    self.loadingView.layer.cornerRadius = 20;
-    self.loadingView.layer.masksToBounds = YES;
-    UIActivityIndicatorView *activi = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    activi.frame = CGRectMake(97, 96, activi.frame.size.width, activi.frame.size.height);
-    [activi startAnimating];
-    [self.loadingView addSubview:activi];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 182, 190, 28)];
-    [label setFont:[UIFont boldSystemFontOfSize:36]];
-    label.backgroundColor = [UIColor clearColor];
-    label.textAlignment = UITextAlignmentCenter;
-    label.text = @"Laden...";
-    label.textColor = [UIColor whiteColor];
-    [self.loadingView addSubview:label];
-    
-    [self.view addSubview:self.loadingView];
-}
--(void)hideLoadingView {
-    [self.loadingView removeFromSuperview];
-}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -67,7 +45,10 @@
     NSString *wachtwoord = [passwordTextField text];
     [emailTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
-    [self showAndSetupLoadingView];
+    
+    LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    [self.view addSubview:loadingView];
+    
     [api getTokenWithUsername:email andPassword:wachtwoord andCompletionBlock:^(NSDictionary *dict) {
         NSLog(@"%@", dict);
         BOOL succes = [[dict objectForKey:@"success"] boolValue];
@@ -86,7 +67,9 @@
                                                   otherButtonTitles:nil, nil];
             [alert show];
         }
-        [self hideLoadingView];
+     
+        [loadingView removeFromSuperview];
+     
     }];
 }
 @end
