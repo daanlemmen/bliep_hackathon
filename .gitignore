@@ -1,1 +1,39 @@
-.DS_Store
+# Backup files
+*~.nib
+*~
+
+# XCode (and ancestors) per-user config (very noisy, and not relevant)
+*.mode1
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspective
+!default.perspective
+*.perspectivev3
+!default.perspectivev3
+*.pbxuser
+!default.pbxuser
+xcuserdata/
+*.xcworkspace/
+!Workspace.xcworkspace
+!default.xcworkspace
+build/*
+*.moved-aside
+profile
+
+# Mac OS X
+*.DS_Store
+Icon?
+*.swp
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Generated files
+*.[oa]
+!User Voice/libUserVoice.a

@@ -1,0 +1,6 @@
+[submodule "ios/Submodules/PDKeyChainBindingsController"]
+	path = ios/Submodules/PDKeyChainBindingsController
+	url = git://github.com/carlbrown/PDKeychainBindingsController.git
+[submodule "ios/Submodules/MKNetworkKit"]
+	path = ios/Submodules/MKNetworkKit
+	url = git://github.com/MugunthKumar/MKNetworkKit.git

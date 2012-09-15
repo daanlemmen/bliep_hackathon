@@ -29,7 +29,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 182, 190, 28)];
     [label setFont:[UIFont boldSystemFontOfSize:36]];
     label.backgroundColor = [UIColor clearColor];
-    label.textAlignment = NSTextAlignmentCenter;
+    label.textAlignment = UITextAlignmentCenter;
     label.text = @"Laden...";
     label.textColor = [UIColor whiteColor];
     [self.loadingView addSubview:label];
