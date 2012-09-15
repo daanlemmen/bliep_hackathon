@@ -20,10 +20,11 @@
     // Override point for customization after application launch.
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     UIViewController *firstTime = [[FirstTimeUseViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     if (![BliepAPI getTokenFromUserDefaults])
         self.window.rootViewController = firstTime;
     else
-        self.window.rootViewController = self.viewController;
+        self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     return YES;
 }
