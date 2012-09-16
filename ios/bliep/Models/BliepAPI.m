@@ -28,6 +28,8 @@
     return self;
 }
 
+#pragma mark - API Calls
+
 - (void)getTokenWithUsername:(NSString *)username andPassword:(NSString *)password andCompletionBlock:(BliepTokenCompletionBlock)completionBlock {
     
     MKNetworkOperation *operation = [self.networkEngine operationWithPath:@"auth"
@@ -79,20 +81,28 @@
     
     [self.networkEngine enqueueOperation:operation];
 }
-+(NSString *)getTokenFromUserDefaults {
+
+#pragma mark - Offline storage
+
++ (NSString *)getTokenFromUserDefaults {
     return [[PDKeychainBindings sharedKeychainBindings] objectForKey:@"bliep_token"];
 }
-+(void)setToken:(NSString *)token {
+
++ (void)setToken:(NSString *)token {
     [[PDKeychainBindings sharedKeychainBindings] setObject:token forKey:@"bliep_token"];
 }
-+(void)removeTokenFromKeychain {
+
++ (void)removeTokenFromKeychain {
     [[PDKeychainBindings sharedKeychainBindings] removeObjectForKey:@"bliep_token"];
 }
-+(NSDictionary *)getAccountInfoFromUserDefaults {
+
++ (NSDictionary *)getAccountInfoFromUserDefaults {
     return [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"cachedAccountInfo"];
 }
-+(BOOL)setAccountInfo:(NSDictionary *)accountInfo {
+
++ (BOOL)setAccountInfo:(NSDictionary *)accountInfo {
     [[NSUserDefaults standardUserDefaults] setValue:accountInfo forKey:@"cachedAccountInfo"];
     return [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 @end

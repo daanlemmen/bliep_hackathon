@@ -14,8 +14,9 @@
     NSDictionary *response = [self responseJSON];
     BOOL val = [[response objectForKey:@"success"] boolValue];
     if (!val) {
-        [super operationFailedWithError:[NSError errorWithDomain:[response objectForKey:@"error"]
-                                                            code:[[response objectForKey:@"error_code"] intValue] userInfo:nil]];
+        [super operationFailedWithError:[NSError errorWithDomain:@"Bliep API Error"
+                                                            code:[[response objectForKey:@"error_code"] intValue]
+                                                        userInfo:@{ NSLocalizedDescriptionKey : [response objectForKey:@"error"] }]];
     } else {
         [super operationSucceeded];
    
