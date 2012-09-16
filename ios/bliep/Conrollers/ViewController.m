@@ -129,39 +129,29 @@
                               }];
 }
 
--(IBAction)pause:(id)sender {
+- (IBAction)changeState:(id)sender {
     
     LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     [self.view addSubview:loadingView];
     
     __weak ViewController *weakSelf = self;
     
-    [self.api setStateWithState:@"pause"
-                       andToken:[BliepAPI getTokenFromUserDefaults]
-                   onCompletion:^(NSDictionary *dict) {
-                            // Update user info
-                            [weakSelf getAccountInfo:nil];
-                            [loadingView removeFromSuperview];
-                        }
-                        onError:^(NSError *error) {
-                            [loadingView removeFromSuperview];
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Error: %d", [error code]]
-                                                                            message:[error localizedDescription]
-                                                                           delegate:nil
-                                                                  cancelButtonTitle:@"Ok"
-                                                                  otherButtonTitles:nil, nil];
-                            [alert show];
-
-                        }];
-}
-
--(IBAction)bliep:(id)sender {
+    NSString *state = @"";
+    switch (((UIButton *)sender).tag) {
+        case 0:
+            state = @"pause";
+            break;
+        case 1:
+            state = @"bliep";
+            break;
+        case 2:
+            state = @"bliep-plus";
+            break;
+        default:
+            break;
+    }
     
-    LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
-    [self.view addSubview:loadingView];
-    
-    __weak ViewController *weakSelf = self;
-    [self.api setStateWithState:@"bliep"
+    [self.api setStateWithState:state
                        andToken:[BliepAPI getTokenFromUserDefaults]
                    onCompletion:^(NSDictionary *dict) {
                        // Update user info
@@ -178,31 +168,7 @@
                             [alert show];
                             
                         }];
-}
-
--(IBAction)bliepplus:(id)sender {
     
-    LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
-    [self.view addSubview:loadingView];
-    
-    __weak ViewController *weakSelf = self;
-    [self.api setStateWithState:@"bliep-plus"
-                       andToken:[BliepAPI getTokenFromUserDefaults]
-                   onCompletion:^(NSDictionary *dict) {
-                       // Update user info
-                       [weakSelf getAccountInfo:nil];
-                       [loadingView removeFromSuperview];
-                   }
-                        onError:^(NSError *error) {
-                            [loadingView removeFromSuperview];
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Error: %d", [error code]]
-                                                                            message:[error localizedDescription]
-                                                                           delegate:nil
-                                                                  cancelButtonTitle:@"Ok"
-                                                                  otherButtonTitles:nil, nil];
-                            [alert show];
-                            
-                        }];
 }
 
 @end

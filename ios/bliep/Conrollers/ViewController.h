@@ -22,8 +22,6 @@
 @property (nonatomic, weak) IBOutlet UIButton *bliepButton;
 @property (nonatomic, weak) IBOutlet UIButton *bliepplusButton;
 
--(IBAction)getAccountInfo:(id)sender;
--(IBAction)pause:(id)sender;
--(IBAction)bliep:(id)sender;
--(IBAction)bliepplus:(id)sender;
+- (IBAction)getAccountInfo:(id)sender;
+- (IBAction)changeState:(id)sender;
 @end
