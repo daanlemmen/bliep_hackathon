@@ -19,6 +19,8 @@
 		E2FAD971160625910063011D /* Handtekening@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2FAD96F160625910063011D /* Handtekening@2x.png */; };
 		E2FAD975160627E50063011D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2FAD973160627E50063011D /* WebViewController.m */; };
 		E2FAD976160627E50063011D /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2FAD974160627E50063011D /* WebViewController.xib */; };
+		E2FAD979160644A40063011D /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = E2FAD977160644A40063011D /* Back.png */; };
+		E2FAD97A160644A40063011D /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2FAD978160644A40063011D /* Back@2x.png */; };
 		F208212E1605BC2C001BCA22 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F208212D1605BC2C001BCA22 /* ViewController.xib */; };
 		F20821321605BDE2001BCA22 /* UIFont+Bliep.m in Sources */ = {isa = PBXBuildFile; fileRef = F20821311605BDE2001BCA22 /* UIFont+Bliep.m */; };
 		F20821351605C60A001BCA22 /* UIImage+Bliep.m in Sources */ = {isa = PBXBuildFile; fileRef = F20821341605C60A001BCA22 /* UIImage+Bliep.m */; };
@@ -75,6 +77,8 @@
 		E2FAD972160627E50063011D /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		E2FAD973160627E50063011D /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		E2FAD974160627E50063011D /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		E2FAD977160644A40063011D /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
+		E2FAD978160644A40063011D /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back@2x.png"; sourceTree = "<group>"; };
 		F208212D1605BC2C001BCA22 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		F20821301605BDE2001BCA22 /* UIFont+Bliep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Bliep.h"; path = "Categories/UIFont+Bliep.h"; sourceTree = "<group>"; };
 		F20821311605BDE2001BCA22 /* UIFont+Bliep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Bliep.m"; path = "Categories/UIFont+Bliep.m"; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 				E2222E0C1604E39C0050E7D8 /* InfoScreen@2x.png */,
 				E2FAD969160622AC0063011D /* FunctionButtonBackground.png */,
 				E2FAD96A160622AC0063011D /* FunctionButtonBackground@2x.png */,
+				E2FAD977160644A40063011D /* Back.png */,
+				E2FAD978160644A40063011D /* Back@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -438,6 +444,8 @@
 				E2FAD970160625910063011D /* Handtekening.png in Resources */,
 				E2FAD971160625910063011D /* Handtekening@2x.png in Resources */,
 				E2FAD976160627E50063011D /* WebViewController.xib in Resources */,
+				E2FAD979160644A40063011D /* Back.png in Resources */,
+				E2FAD97A160644A40063011D /* Back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
