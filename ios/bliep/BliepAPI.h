@@ -20,7 +20,8 @@ typedef void(^BliepTokenCompletionBlock)(NSDictionary *dict);
 - (void)getAccountInfoWithToken:(NSString *)token andCompletionBlock:(BliepTokenCompletionBlock)completionBlock;
 -(void)setStateWithState:(NSString *)state andToken:(NSString *)token andCompletionBlock:(BliepTokenCompletionBlock)completionBlock;
 +(NSString *)getTokenFromUserDefaults;
-+(BOOL)setToken:(NSString *)token;
++(void)setToken:(NSString *)token;
++(void)removeTokenFromKeychain;
 +(NSDictionary *)getAccountInfoFromUserDefaults;
 +(BOOL)setAccountInfo:(NSDictionary *)accountInfo;
 @end

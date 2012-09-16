@@ -72,4 +72,7 @@
      
     }];
 }
+-(IBAction)next:(id)sender {
+    [passwordTextField becomeFirstResponder];
+}
 @end

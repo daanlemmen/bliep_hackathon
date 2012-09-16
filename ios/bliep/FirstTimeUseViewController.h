@@ -13,4 +13,5 @@
     IBOutlet UITextField *passwordTextField;
 }
 -(IBAction)login:(id)sender;
+-(IBAction)next:(id)sender;
 @end

@@ -18,11 +18,16 @@
 
 @synthesize connectionData, connectionType;
 
+-(void)loguit {
+    [BliepAPI removeTokenFromKeychain];
+}
+
 - (void)viewDidLoad
 {
     
     UIButton *logoutButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 0.0, 90.0, 44.0)];
     [logoutButton setImage:[UIImage imageNamed:@"Logout.png"] forState:UIControlStateNormal];
+    [logoutButton addTarget:self action:@selector(loguit) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:logoutButton]];
     
     stateLabel.font = [UIFont fontWithName:@"Museo" size:17];

@@ -24,6 +24,10 @@
 		F27FE15F1604D83100FF4706 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F27FE0E41604D83100FF4706 /* Reachability.m */; };
 		F27FE1661604D83100FF4706 /* PDKeychainBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = F27FE0FB1604D83100FF4706 /* PDKeychainBindings.m */; };
 		F27FE1671604D83100FF4706 /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F27FE0FD1604D83100FF4706 /* PDKeychainBindingsController.m */; };
+		FB27E0FB16051D9900C5D588 /* signin.png in Resources */ = {isa = PBXBuildFile; fileRef = FB27E0F716051D9900C5D588 /* signin.png */; };
+		FB27E0FC16051D9900C5D588 /* signin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB27E0F816051D9900C5D588 /* signin@2x.png */; };
+		FB27E0FD16051D9900C5D588 /* signinbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = FB27E0F916051D9900C5D588 /* signinbutton.png */; };
+		FB27E0FE16051D9900C5D588 /* signinbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB27E0FA16051D9900C5D588 /* signinbutton@2x.png */; };
 		FB378C041603D66B009286B4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB378C031603D66B009286B4 /* QuartzCore.framework */; };
 		FB378C081603EAF4009286B4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FB378C061603EAF4009286B4 /* Icon.png */; };
 		FB378C091603EAF4009286B4 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB378C071603EAF4009286B4 /* Icon@2x.png */; };
@@ -80,6 +84,10 @@
 		F27FE0FB1604D83100FF4706 /* PDKeychainBindings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDKeychainBindings.m; sourceTree = "<group>"; };
 		F27FE0FC1604D83100FF4706 /* PDKeychainBindingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDKeychainBindingsController.h; sourceTree = "<group>"; };
 		F27FE0FD1604D83100FF4706 /* PDKeychainBindingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDKeychainBindingsController.m; sourceTree = "<group>"; };
+		FB27E0F716051D9900C5D588 /* signin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin.png; sourceTree = "<group>"; };
+		FB27E0F816051D9900C5D588 /* signin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signin@2x.png"; sourceTree = "<group>"; };
+		FB27E0F916051D9900C5D588 /* signinbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signinbutton.png; sourceTree = "<group>"; };
+		FB27E0FA16051D9900C5D588 /* signinbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signinbutton@2x.png"; sourceTree = "<group>"; };
 		FB378C031603D66B009286B4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FB378C061603EAF4009286B4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		FB378C071603EAF4009286B4 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -305,6 +313,10 @@
 		FB70E67016034EBB0072C926 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FB27E0F716051D9900C5D588 /* signin.png */,
+				FB27E0F816051D9900C5D588 /* signin@2x.png */,
+				FB27E0F916051D9900C5D588 /* signinbutton.png */,
+				FB27E0FA16051D9900C5D588 /* signinbutton@2x.png */,
 				FB378C121603FA89009286B4 /* museo700regular.ttf */,
 				FB70E67116034EBB0072C926 /* bliep-Info.plist */,
 				FB70E67216034EBB0072C926 /* InfoPlist.strings */,
@@ -382,6 +394,10 @@
 				E2222E091604E0C30050E7D8 /* Logout@2x.png in Resources */,
 				E2222E0D1604E39C0050E7D8 /* InfoScreen.png in Resources */,
 				E2222E0E1604E39C0050E7D8 /* InfoScreen@2x.png in Resources */,
+				FB27E0FB16051D9900C5D588 /* signin.png in Resources */,
+				FB27E0FC16051D9900C5D588 /* signin@2x.png in Resources */,
+				FB27E0FD16051D9900C5D588 /* signinbutton.png in Resources */,
+				FB27E0FE16051D9900C5D588 /* signinbutton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

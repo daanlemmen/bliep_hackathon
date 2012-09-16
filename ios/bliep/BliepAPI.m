@@ -82,9 +82,11 @@
 +(NSString *)getTokenFromUserDefaults {
     return [[PDKeychainBindings sharedKeychainBindings] objectForKey:@"bliep_token"];
 }
-+(BOOL)setToken:(NSString *)token {
++(void)setToken:(NSString *)token {
     [[PDKeychainBindings sharedKeychainBindings] setObject:token forKey:@"bliep_token"];
-    return [[NSUserDefaults standardUserDefaults] synchronize];
+}
++(void)removeTokenFromKeychain {
+    [[PDKeychainBindings sharedKeychainBindings] removeObjectForKey:@"bliep_token"];
 }
 +(NSDictionary *)getAccountInfoFromUserDefaults {
     return [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"cachedAccountInfo"];

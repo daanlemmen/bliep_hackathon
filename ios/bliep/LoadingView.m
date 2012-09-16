@@ -35,7 +35,7 @@
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 230, 230)];
         [label setFont:[UIFont fontWithName:@"Museo" size:28.0f]];
         label.backgroundColor = [UIColor clearColor];
-        label.textAlignment = NSTextAlignmentCenter;
+        label.textAlignment = UITextAlignmentCenter;
         label.text = @"Laden...";
         label.textColor = [UIColor whiteColor];
         //Shadow
