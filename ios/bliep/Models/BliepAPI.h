@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+
 typedef enum {
     BliepConnectionTypeToken,
     BliepConnectionTypeAccount,
     BliepConnectionTypeChangeAccountState,
-}BliepConnectionType;
+} BliepConnectionType;
+
 typedef void(^BliepTokenCompletionBlock)(NSDictionary *dict);
 
 @interface BliepAPI : NSObject <NSURLConnectionDataDelegate>

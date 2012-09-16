@@ -28,12 +28,15 @@
         _displayView.layer.cornerRadius = 20;
         _displayView.layer.masksToBounds = YES;
         UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        activityIndicator.frame = CGRectMake(self.displayView.frame.size.width / 2 - activityIndicator.frame.size.width / 2, self.displayView.frame.size.height / 2 - activityIndicator.frame.size.height / 2, activityIndicator.frame.size.width, activityIndicator.frame.size.height);
+        activityIndicator.frame = CGRectMake(_displayView.frame.size.width / 2 - activityIndicator.frame.size.width / 2,
+                                             _displayView.frame.size.height / 2 - activityIndicator.frame.size.height / 2,
+                                             activityIndicator.frame.size.width,
+                                             activityIndicator.frame.size.height);
         [activityIndicator startAnimating];
         [_displayView addSubview:activityIndicator];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 230, 230)];
-        [label setFont:[UIFont fontWithName:@"Museo" size:28.0f]];
+        [label setFont:[UIFont bliepFontWithSize:28.0f]];
         label.backgroundColor = [UIColor clearColor];
         label.textAlignment = UITextAlignmentCenter;
         label.text = @"Laden...";
@@ -63,8 +66,8 @@
 - (void)removeFromSuperview {
     
     [UIView animateWithDuration:0.2 animations:^{
-        [_displayView setAlpha:0.0f];
-        [_displayView setTransform:CGAffineTransformMakeScale(0.8, 0.8)];
+        [self.displayView setAlpha:0.0f];
+        [self.displayView setTransform:CGAffineTransformMakeScale(0.8, 0.8)];
     } completion:^(BOOL finished) {
         [super removeFromSuperview];
     }];

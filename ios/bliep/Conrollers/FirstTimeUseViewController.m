@@ -11,10 +11,11 @@
 #import "ViewController.h"
 #import "LoadingView.h"
 #import <QuartzCore/QuartzCore.h>
-@interface FirstTimeUseViewController () {
-    BliepAPI *api;
-}
+@interface FirstTimeUseViewController ()
+
+@property (nonatomic, strong) BliepAPI *api;
 @property (nonatomic, strong) UIView *loadingView;
+
 @end
 
 @implementation FirstTimeUseViewController
@@ -31,8 +32,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    api = [[BliepAPI alloc] init];
+    self.api = [[BliepAPI alloc] init];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewDidUnload {
+    self.api = nil;
+    self.loadingView = nil;
+    [super viewDidUnload];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,17 +47,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(IBAction)login:(id)sender {
-    NSString *email = [emailTextField text];
-    NSString *wachtwoord = [passwordTextField text];
-    [emailTextField resignFirstResponder];
-    [passwordTextField resignFirstResponder];
+    NSString *email = [self.emailTextField text];
+    NSString *wachtwoord = [self.passwordTextField text];
+    [self.emailTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
     
     LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     [self.view addSubview:loadingView];
     
-    [api getTokenWithUsername:email andPassword:wachtwoord andCompletionBlock:^(NSDictionary *dict) {
-        NSLog(@"%@", dict);
+    [self.api getTokenWithUsername:email andPassword:wachtwoord andCompletionBlock:^(NSDictionary *dict) {
+        DLog(@"%@", dict);
         BOOL succes = [[dict objectForKey:@"success"] boolValue];
         if (succes == YES){
             // Save token
@@ -72,7 +80,9 @@
      
     }];
 }
+
 -(IBAction)next:(id)sender {
-    [passwordTextField becomeFirstResponder];
+    [self.passwordTextField becomeFirstResponder];
 }
+
 @end

@@ -8,6 +8,12 @@
 
 #import "StateChangeButton.h"
 
+#define highlightedTextColor [UIColor colorWithWhite:227.0f/255.0f alpha:1.0f]
+#define normalTextColor [UIColor colorWithWhite:227.0f/255.0f alpha:0.7f]
+
+#define highlightedStrokeColor [UIColor colorWithRed:253.0f/255.0f green:244.0f/255.0f blue:0.0f alpha:1.0f]
+#define normalStrokeColor [UIColor colorWithWhite:0.478 alpha:1.0]
+
 @implementation StateChangeButton
 
 @synthesize highlighted = _highlighted;
@@ -28,18 +34,18 @@
 
 - (void)initialize {
     [self setHighlighted:NO];
-    [self.titleLabel setFont:[UIFont fontWithName:@"Museo" size:27.0]];
+    [self.titleLabel setFont:[UIFont bliepFontWithSize:27.0]];
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
-    _highlighted = highlighted;
+    self.highlighted = highlighted;
     
     //Title label color
     if (highlighted) {
-        [self.titleLabel setTextColor:[UIColor colorWithWhite:227.0f/255.0f alpha:1.0f]];
+        [self.titleLabel setTextColor:highlightedTextColor];
         [self setEnabled:NO];
     } else {
-        [self.titleLabel setTextColor:[UIColor colorWithWhite:227.0f/255.0f alpha:0.7f]];
+        [self.titleLabel setTextColor:normalTextColor];
         [self setEnabled:YES];
     }
     
@@ -48,10 +54,10 @@
 }
 
 - (void)setEnabled:(BOOL)enabled {
-    if (_highlighted) {
-        [self.titleLabel setTextColor:[UIColor colorWithWhite:227.0f/255.0f alpha:1.0f]];
+    if (self.highlighted) {
+        [self.titleLabel setTextColor:highlightedTextColor];
     } else {
-        [self.titleLabel setTextColor:[UIColor colorWithWhite:227.0f/255.0f alpha:0.7f]];
+        [self.titleLabel setTextColor:normalTextColor];
     }
 }
 
@@ -64,16 +70,16 @@
                                                           startAngle:0.0
                                                             endAngle:2*M_PI
                                                            clockwise:YES];
-    if (!_highlighted) {
-        [circlePath setLineWidth:2.0f];
+    if (self.highlighted) {
+        [circlePath setLineWidth:5.0f];
         [[UIColor blackColor] setFill];
-        [[UIColor colorWithWhite:0.478 alpha:1.0] setStroke];
+        [highlightedStrokeColor setStroke];
         [circlePath fill];
         [circlePath stroke];
     } else {
-        [circlePath setLineWidth:5.0f];
+        [circlePath setLineWidth:2.0f];
         [[UIColor blackColor] setFill];
-        [[UIColor colorWithRed:253.0f/255.0f green:244.0f/255.0f blue:0.0f alpha:1.0f] setStroke];
+        [normalStrokeColor setStroke];
         [circlePath fill];
         [circlePath stroke];
     }

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BliepAPI.h"
-@interface FirstTimeUseViewController : UIViewController {
-    IBOutlet UITextField *emailTextField;
-    IBOutlet UITextField *passwordTextField;
-}
+@interface FirstTimeUseViewController : UIViewController
+
+@property (nonatomic, weak) IBOutlet UITextField *emailTextField;
+@property (nonatomic, weak) IBOutlet UITextField *passwordTextField;
+
 -(IBAction)login:(id)sender;
 -(IBAction)next:(id)sender;
 @end

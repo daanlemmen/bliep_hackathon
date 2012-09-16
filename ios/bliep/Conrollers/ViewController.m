@@ -12,11 +12,11 @@
 #import "LoadingView.h"
 
 @interface ViewController ()
+@property (nonatomic, strong) BliepAPI *api;
+
 @end
 
 @implementation ViewController
-
-@synthesize connectionData, connectionType;
 
 -(void)loguit {
     [BliepAPI removeTokenFromKeychain];
@@ -30,49 +30,53 @@
     [logoutButton addTarget:self action:@selector(loguit) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:logoutButton]];
     
-    stateLabel.font = [UIFont fontWithName:@"Museo" size:17];
-    balanceLabel.font = [UIFont fontWithName:@"Museo" size:48];
-    calltimeLabel.font = [UIFont fontWithName:@"Museo" size:30];
+    self.stateLabel.font = [UIFont bliepFontWithSize:17];
+    self.balanceLabel.font = [UIFont bliepFontWithSize:48];
+    self.calltimeLabel.font = [UIFont bliepFontWithSize:30];
     
     [super viewDidLoad];
-    api = [[BliepAPI alloc] init];
+    self.api = [[BliepAPI alloc] init];
     
     // Set cached Data
     NSDictionary *cachedData = [BliepAPI getAccountInfoFromUserDefaults];
     
     if (cachedData){
-        stateLabel.text = [cachedData objectForKey:@"state"];
+        self.stateLabel.text = [cachedData objectForKey:@"state"];
         if ([[cachedData objectForKey:@"state"] isEqualToString:@"pause"]) {
-            [pauseButton setHighlighted:YES];
-            [bliepButton setHighlighted:NO];
-            [bliepplusButton setHighlighted:NO];
+            [self.pauseButton setHighlighted:YES];
+            [self.bliepButton setHighlighted:NO];
+            [self.bliepplusButton setHighlighted:NO];
         } else if ([[cachedData objectForKey:@"state"] isEqualToString:@"bliep"]) {
-             [pauseButton setHighlighted:NO];
-             [bliepButton setHighlighted:YES];
-             [bliepplusButton setHighlighted:NO];
+             [self.pauseButton setHighlighted:NO];
+             [self.bliepButton setHighlighted:YES];
+             [self.bliepplusButton setHighlighted:NO];
         } else if ([[cachedData objectForKey:@"state"] isEqualToString:@"bliep-plus"]) {
-            [pauseButton setHighlighted:NO];
-            [bliepButton setHighlighted:NO];
-            [bliepplusButton setHighlighted:YES];
+            [self.pauseButton setHighlighted:NO];
+            [self.bliepButton setHighlighted:NO];
+            [self.bliepplusButton setHighlighted:YES];
         }
-        balanceLabel.text = [NSString stringWithFormat:@"€ %@", [cachedData objectForKey:@"balance"]];
+        self.balanceLabel.text = [NSString stringWithFormat:@"€ %@", [cachedData objectForKey:@"balance"]];
         NSString *seconds = [NSString stringWithFormat:@"%@", [[cachedData objectForKey:@"calltime"] objectForKey:@"seconds"]];
         if ([seconds length] == 1)
             seconds = [@"0" stringByAppendingString:seconds];
-        calltimeLabel.text = [NSString stringWithFormat:@"%@:%@", [[cachedData objectForKey:@"calltime"] objectForKey:@"minutes"], seconds];
+        self.calltimeLabel.text = [NSString stringWithFormat:@"%@:%@", [[cachedData objectForKey:@"calltime"] objectForKey:@"minutes"], seconds];
     }else {
-        stateLabel.text = @"";
-        balanceLabel.text = @"";
-        calltimeLabel.text = @"";
+        self.stateLabel.text = @"";
+        self.balanceLabel.text = @"";
+        self.calltimeLabel.text = @"";
     }
-    [pauseButton setEnabled:NO];
-    [bliepButton setEnabled:NO];
-    [bliepplusButton setEnabled:NO];
+    [self.pauseButton setEnabled:NO];
+    [self.bliepButton setEnabled:NO];
+    [self.bliepplusButton setEnabled:NO];
     
     if ([[BliepAPI getTokenFromUserDefaults] length] > 0){
         [self getAccountInfo:nil];
     }
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,31 +90,31 @@
     LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     [self.view addSubview:loadingView];
     
-    [api getAccountInfoWithToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
-        NSLog(@"%@", dict);
+    [self.api getAccountInfoWithToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
+        DLog(@"%@", dict);
         BOOL succes = [[dict objectForKey:@"success"] boolValue];
         if (succes == YES) {
             // Get account info
             NSDictionary *result = [dict objectForKey:@"result"];
-            stateLabel.text = [result objectForKey:@"state"];
+            self.stateLabel.text = [result objectForKey:@"state"];
             if ([[result objectForKey:@"state"] isEqualToString:@"pause"]) {
-                [pauseButton setHighlighted:YES];
-                [bliepButton setHighlighted:NO];
-                [bliepplusButton setHighlighted:NO];
+                [self.pauseButton setHighlighted:YES];
+                [self.bliepButton setHighlighted:NO];
+                [self.bliepplusButton setHighlighted:NO];
             } else if ([[result objectForKey:@"state"] isEqualToString:@"bliep"]) {
-                [pauseButton setHighlighted:NO];
-                [bliepButton setHighlighted:YES];
-                [bliepplusButton setHighlighted:NO];
+                [self.pauseButton setHighlighted:NO];
+                [self.bliepButton setHighlighted:YES];
+                [self.bliepplusButton setHighlighted:NO];
             } else if ([[result objectForKey:@"state"] isEqualToString:@"bliep-plus"]) {
-                [pauseButton setHighlighted:NO];
-                [bliepButton setHighlighted:NO];
-                [bliepplusButton setHighlighted:YES];
+                [self.pauseButton setHighlighted:NO];
+                [self.bliepButton setHighlighted:NO];
+                [self.bliepplusButton setHighlighted:YES];
             }
-            balanceLabel.text = [NSString stringWithFormat:@"€ %@", [result objectForKey:@"balance"]];
+            self.balanceLabel.text = [NSString stringWithFormat:@"€ %@", [result objectForKey:@"balance"]];
             NSString *seconds = [NSString stringWithFormat:@"%@", [[result objectForKey:@"calltime"] objectForKey:@"seconds"]];
             if ([seconds length] == 1)
                 seconds = [@"0" stringByAppendingString:seconds];
-            calltimeLabel.text = [NSString stringWithFormat:@"%@:%@", [[result objectForKey:@"calltime"] objectForKey:@"minutes"], seconds];
+            self.calltimeLabel.text = [NSString stringWithFormat:@"%@:%@", [[result objectForKey:@"calltime"] objectForKey:@"minutes"], seconds];
             [BliepAPI setAccountInfo:result];
             
             [loadingView removeFromSuperview];
@@ -125,8 +129,8 @@
     [self.view addSubview:loadingView];
     
     __weak ViewController *weakSelf = self;
-    [api setStateWithState:@"pause" andToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
-        NSLog(@"%@", dict);
+    [self.api setStateWithState:@"pause" andToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
+        DLog(@"%@", dict);
         BOOL succes = [[dict objectForKey:@"success"] boolValue];
         if (succes == YES) {
             // Update user info
@@ -147,8 +151,8 @@
     [self.view addSubview:loadingView];
     
     __weak ViewController *weakSelf = self;
-    [api setStateWithState:@"bliep" andToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
-        NSLog(@"%@", dict);
+    [self.api setStateWithState:@"bliep" andToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
+        DLog(@"%@", dict);
         BOOL succes = [[dict objectForKey:@"success"] boolValue];
         if (succes == YES) {
             // Update user info
@@ -170,8 +174,8 @@
     [self.view addSubview:loadingView];
     
     __weak ViewController *weakSelf = self;
-    [api setStateWithState:@"bliep-plus" andToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
-        NSLog(@"%@", dict);
+    [self.api setStateWithState:@"bliep-plus" andToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
+        DLog(@"%@", dict);
         BOOL succes = [[dict objectForKey:@"success"] boolValue];
         if (succes == YES) {
             // Update user info

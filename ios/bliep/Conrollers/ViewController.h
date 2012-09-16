@@ -7,24 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-@class BliepAPI;
-@interface ViewController : UIViewController <NSURLConnectionDataDelegate> {
-    IBOutlet UITextField *emailTextField;
-    IBOutlet UITextField *passwordTextField;
-    IBOutlet UIWebView *web;
-    
-    IBOutlet UILabel *stateLabel;
-    IBOutlet UILabel *balanceLabel;
-    IBOutlet UILabel *calltimeLabel;
-    
-    IBOutlet UIButton *pauseButton;
-    IBOutlet UIButton *bliepButton;
-    IBOutlet UIButton *bliepplusButton;
-    
-    BliepAPI *api;
-}
-@property (nonatomic) int connectionType;
-@property (nonatomic, strong) NSMutableData *connectionData;
+
+@interface ViewController : UIViewController <NSURLConnectionDataDelegate>
+
+@property (nonatomic, weak) IBOutlet UITextField *emailTextField;
+@property (nonatomic, weak) IBOutlet UITextField *passwordTextField;
+@property (nonatomic, weak) IBOutlet UIWebView *web;
+
+@property (nonatomic, weak) IBOutlet UILabel *stateLabel;
+@property (nonatomic, weak) IBOutlet UILabel *balanceLabel;
+@property (nonatomic, weak) IBOutlet UILabel *calltimeLabel;
+
+@property (nonatomic, weak) IBOutlet UIButton *pauseButton;
+@property (nonatomic, weak) IBOutlet UIButton *bliepButton;
+@property (nonatomic, weak) IBOutlet UIButton *bliepplusButton;
+
 -(IBAction)getAccountInfo:(id)sender;
 -(IBAction)pause:(id)sender;
 -(IBAction)bliep:(id)sender;

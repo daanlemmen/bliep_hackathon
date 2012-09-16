@@ -33,8 +33,10 @@
 - (void)getTokenWithUsername:(NSString *)username andPassword:(NSString *)password andCompletionBlock:(BliepTokenCompletionBlock)completionBlock {
     
     MKNetworkOperation *operation = [self.networkEngine operationWithPath:@"auth"
-                              params:[NSMutableDictionary dictionaryWithObjects:@[username, password] forKeys:@[@"email", @"password"]]
-                          httpMethod:@"POST" ssl:YES];
+                                                                   params:[NSMutableDictionary dictionaryWithObjects:@[username, password]
+                                                                                                             forKeys:@[@"email", @"password"]]
+                                                               httpMethod:@"POST"
+                                                                      ssl:YES];
     
     [operation onCompletion:^(MKNetworkOperation *completedOperation) {
         NSDictionary *dict = [completedOperation responseJSON];
