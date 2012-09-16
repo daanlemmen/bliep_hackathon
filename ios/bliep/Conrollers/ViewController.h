@@ -24,4 +24,9 @@
 
 - (IBAction)getAccountInfo:(id)sender;
 - (IBAction)changeState:(id)sender;
+
+#pragma mark - Open links
+
+- (IBAction)openSignature:(id)sender;
+
 @end

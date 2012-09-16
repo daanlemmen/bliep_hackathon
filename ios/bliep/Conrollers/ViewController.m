@@ -10,6 +10,8 @@
 #import "BliepAPI.h"
 #import <QuartzCore/QuartzCore.h>
 #import "LoadingView.h"
+#import "UIFont+Bliep.h"
+#import "WebViewController.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) BliepAPI *api;
@@ -168,6 +170,21 @@
                             [alert show];
                             
                         }];
+    
+}
+
+#pragma mark - Open links
+
+- (void)openWebviewWithURL:(NSURL *)url {
+    
+    WebViewController *vc = [[WebViewController alloc] initWithNibName:@"WebViewController" bundle:[NSBundle mainBundle] url:url];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+- (void)openSignature:(id)sender {
+    
+    [self openWebviewWithURL:[NSURL URLWithString:@"https://www.bliep.nl/#/signature"]];
     
 }
 

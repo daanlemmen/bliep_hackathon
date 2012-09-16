@@ -13,6 +13,12 @@
 		E2222E0D1604E39C0050E7D8 /* InfoScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E2222E0B1604E39C0050E7D8 /* InfoScreen.png */; };
 		E2222E0E1604E39C0050E7D8 /* InfoScreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2222E0C1604E39C0050E7D8 /* InfoScreen@2x.png */; };
 		E2222E111604F8370050E7D8 /* StateChangeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E2222E101604F8370050E7D8 /* StateChangeButton.m */; };
+		E2FAD96B160622AC0063011D /* FunctionButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E2FAD969160622AC0063011D /* FunctionButtonBackground.png */; };
+		E2FAD96C160622AC0063011D /* FunctionButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2FAD96A160622AC0063011D /* FunctionButtonBackground@2x.png */; };
+		E2FAD970160625910063011D /* Handtekening.png in Resources */ = {isa = PBXBuildFile; fileRef = E2FAD96E160625910063011D /* Handtekening.png */; };
+		E2FAD971160625910063011D /* Handtekening@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2FAD96F160625910063011D /* Handtekening@2x.png */; };
+		E2FAD975160627E50063011D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2FAD973160627E50063011D /* WebViewController.m */; };
+		E2FAD976160627E50063011D /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2FAD974160627E50063011D /* WebViewController.xib */; };
 		F208212E1605BC2C001BCA22 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F208212D1605BC2C001BCA22 /* ViewController.xib */; };
 		F20821321605BDE2001BCA22 /* UIFont+Bliep.m in Sources */ = {isa = PBXBuildFile; fileRef = F20821311605BDE2001BCA22 /* UIFont+Bliep.m */; };
 		F20821351605C60A001BCA22 /* UIImage+Bliep.m in Sources */ = {isa = PBXBuildFile; fileRef = F20821341605C60A001BCA22 /* UIImage+Bliep.m */; };
@@ -62,6 +68,13 @@
 		E2222E0C1604E39C0050E7D8 /* InfoScreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InfoScreen@2x.png"; sourceTree = "<group>"; };
 		E2222E0F1604F8370050E7D8 /* StateChangeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateChangeButton.h; sourceTree = "<group>"; };
 		E2222E101604F8370050E7D8 /* StateChangeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateChangeButton.m; sourceTree = "<group>"; };
+		E2FAD969160622AC0063011D /* FunctionButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FunctionButtonBackground.png; sourceTree = "<group>"; };
+		E2FAD96A160622AC0063011D /* FunctionButtonBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FunctionButtonBackground@2x.png"; sourceTree = "<group>"; };
+		E2FAD96E160625910063011D /* Handtekening.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Handtekening.png; sourceTree = "<group>"; };
+		E2FAD96F160625910063011D /* Handtekening@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Handtekening@2x.png"; sourceTree = "<group>"; };
+		E2FAD972160627E50063011D /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		E2FAD973160627E50063011D /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		E2FAD974160627E50063011D /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		F208212D1605BC2C001BCA22 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		F20821301605BDE2001BCA22 /* UIFont+Bliep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Bliep.h"; path = "Categories/UIFont+Bliep.h"; sourceTree = "<group>"; };
 		F20821311605BDE2001BCA22 /* UIFont+Bliep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Bliep.m"; path = "Categories/UIFont+Bliep.m"; sourceTree = "<group>"; };
@@ -156,8 +169,12 @@
 				FB70E67F16034EBC0072C926 /* Default-568h@2x.png */,
 				E2222E061604E0C30050E7D8 /* Logout.png */,
 				E2222E071604E0C30050E7D8 /* Logout@2x.png */,
+				E2FAD96E160625910063011D /* Handtekening.png */,
+				E2FAD96F160625910063011D /* Handtekening@2x.png */,
 				E2222E0B1604E39C0050E7D8 /* InfoScreen.png */,
 				E2222E0C1604E39C0050E7D8 /* InfoScreen@2x.png */,
+				E2FAD969160622AC0063011D /* FunctionButtonBackground.png */,
+				E2FAD96A160622AC0063011D /* FunctionButtonBackground@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -195,6 +212,9 @@
 				FB378C0D1603F5E5009286B4 /* FirstTimeUseViewController.h */,
 				FB378C0E1603F5E5009286B4 /* FirstTimeUseViewController.m */,
 				FB378C0F1603F5E6009286B4 /* FirstTimeUseViewController.xib */,
+				E2FAD972160627E50063011D /* WebViewController.h */,
+				E2FAD973160627E50063011D /* WebViewController.m */,
+				E2FAD974160627E50063011D /* WebViewController.xib */,
 			);
 			name = Controllers;
 			path = Conrollers;
@@ -413,6 +433,11 @@
 				FB27E0FD16051D9900C5D588 /* signinbutton.png in Resources */,
 				FB27E0FE16051D9900C5D588 /* signinbutton@2x.png in Resources */,
 				F208212E1605BC2C001BCA22 /* ViewController.xib in Resources */,
+				E2FAD96B160622AC0063011D /* FunctionButtonBackground.png in Resources */,
+				E2FAD96C160622AC0063011D /* FunctionButtonBackground@2x.png in Resources */,
+				E2FAD970160625910063011D /* Handtekening.png in Resources */,
+				E2FAD971160625910063011D /* Handtekening@2x.png in Resources */,
+				E2FAD976160627E50063011D /* WebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +470,7 @@
 				E2222E111604F8370050E7D8 /* StateChangeButton.m in Sources */,
 				F20821321605BDE2001BCA22 /* UIFont+Bliep.m in Sources */,
 				F20821351605C60A001BCA22 /* UIImage+Bliep.m in Sources */,
+				E2FAD975160627E50063011D /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

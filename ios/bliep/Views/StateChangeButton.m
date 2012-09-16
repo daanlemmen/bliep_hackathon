@@ -46,6 +46,12 @@
     [self.titleLabel setFont:[UIFont bliepFontWithSize:27.0]];
     [self setTransform:CGAffineTransformMakeTranslation(0, -30)];
     
+    //Shadow
+    [self.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.layer setShadowOffset:CGSizeMake(0.0f, 1.0f)];
+    [self.layer setShadowOpacity:0.75f];
+    [self.layer setShadowRadius:1.0f];
+    
     //Init pulseView
     _pulseView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.width - 20, self.frame.size.height - 20)];
     [_pulseView setBackgroundColor:highlightedStrokeColor];
