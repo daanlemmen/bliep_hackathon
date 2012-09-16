@@ -62,8 +62,13 @@
                           // Save token
                           [BliepAPI setToken:[[dict objectForKey:@"result"] objectForKey:@"token"]];
                           ViewController *vc = [[ViewController alloc] init];
-                          vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-                          [self presentViewController:vc animated:YES completion:nil];
+                          UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
+                          
+                          [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:252.0f/255.0f green:242.0f/255.0f blue:0.0f alpha:1.0f]]
+                                                             forBarMetrics:UIBarMetricsDefault];
+                          navController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                          
+                          [self presentViewController:navController animated:YES completion:nil];
                           
                           [loadingView removeFromSuperview];
                       } onError:^(NSError *error) {

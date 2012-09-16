@@ -7,6 +7,7 @@
 //
 
 #import "StateChangeButton.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define highlightedTextColor [UIColor colorWithWhite:227.0f/255.0f alpha:1.0f]
 #define normalTextColor [UIColor colorWithWhite:227.0f/255.0f alpha:0.7f]
@@ -42,10 +43,16 @@
     
     //Title label color
     if (highlighted) {
-        [self.titleLabel setTextColor:highlightedTextColor];
+        [self setTitleColor:highlightedTextColor forState:UIControlStateNormal];
+        [self setTitleColor:highlightedTextColor forState:UIControlStateDisabled];
+        [self.layer setBorderWidth:5.0f];
+        [self.layer setBorderColor:highlightedStrokeColor.CGColor];
         [self setEnabled:NO];
     } else {
-        [self.titleLabel setTextColor:normalTextColor];
+        [self setTitleColor:normalTextColor forState:UIControlStateNormal];
+        [self setTitleColor:normalTextColor forState:UIControlStateDisabled];
+        [self.layer setBorderWidth:2.0f];
+        [self.layer setBorderColor:normalStrokeColor.CGColor];
         [self setEnabled:YES];
     }
     
@@ -55,12 +62,6 @@
 }
 
 - (void)setEnabled:(BOOL)enabled {
-    if (self.highlighted) {
-        [self.titleLabel setTextColor:highlightedTextColor];
-    } else {
-        [self.titleLabel setTextColor:normalTextColor];
-    }
-    
     [super setEnabled:enabled];
 }
 
@@ -76,15 +77,11 @@
     if (self.highlighted) {
         [circlePath setLineWidth:5.0f];
         [[UIColor blackColor] setFill];
-        [highlightedStrokeColor setStroke];
         [circlePath fill];
-        [circlePath stroke];
     } else {
         [circlePath setLineWidth:2.0f];
         [[UIColor blackColor] setFill];
-        [normalStrokeColor setStroke];
         [circlePath fill];
-        [circlePath stroke];
     }
     
 }
