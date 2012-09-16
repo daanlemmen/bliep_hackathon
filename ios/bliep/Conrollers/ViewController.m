@@ -90,37 +90,43 @@
     LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     [self.view addSubview:loadingView];
     
-    [self.api getAccountInfoWithToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
-        DLog(@"%@", dict);
-        BOOL succes = [[dict objectForKey:@"success"] boolValue];
-        if (succes == YES) {
-            // Get account info
-            NSDictionary *result = [dict objectForKey:@"result"];
-            self.stateLabel.text = [result objectForKey:@"state"];
-            if ([[result objectForKey:@"state"] isEqualToString:@"pause"]) {
-                [self.pauseButton setHighlighted:YES];
-                [self.bliepButton setHighlighted:NO];
-                [self.bliepplusButton setHighlighted:NO];
-            } else if ([[result objectForKey:@"state"] isEqualToString:@"bliep"]) {
-                [self.pauseButton setHighlighted:NO];
-                [self.bliepButton setHighlighted:YES];
-                [self.bliepplusButton setHighlighted:NO];
-            } else if ([[result objectForKey:@"state"] isEqualToString:@"bliep-plus"]) {
-                [self.pauseButton setHighlighted:NO];
-                [self.bliepButton setHighlighted:NO];
-                [self.bliepplusButton setHighlighted:YES];
-            }
-            self.balanceLabel.text = [NSString stringWithFormat:@"€ %@", [result objectForKey:@"balance"]];
-            NSString *seconds = [NSString stringWithFormat:@"%@", [[result objectForKey:@"calltime"] objectForKey:@"seconds"]];
-            if ([seconds length] == 1)
-                seconds = [@"0" stringByAppendingString:seconds];
-            self.calltimeLabel.text = [NSString stringWithFormat:@"%@:%@", [[result objectForKey:@"calltime"] objectForKey:@"minutes"], seconds];
-            [BliepAPI setAccountInfo:result];
-            
-            [loadingView removeFromSuperview];
-            
-        }
-    }];
+    
+    [self.api getAccountInfoWithToken:[BliepAPI getTokenFromUserDefaults]
+                         onCompletion:^(NSDictionary *dict) {
+                             // Get account info
+                             NSDictionary *result = [dict objectForKey:@"result"];
+                             self.stateLabel.text = [result objectForKey:@"state"];
+                             if ([[result objectForKey:@"state"] isEqualToString:@"pause"]) {
+                                 [self.pauseButton setHighlighted:YES];
+                                 [self.bliepButton setHighlighted:NO];
+                                 [self.bliepplusButton setHighlighted:NO];
+                             } else if ([[result objectForKey:@"state"] isEqualToString:@"bliep"]) {
+                                 [self.pauseButton setHighlighted:NO];
+                                 [self.bliepButton setHighlighted:YES];
+                                 [self.bliepplusButton setHighlighted:NO];
+                             } else if ([[result objectForKey:@"state"] isEqualToString:@"bliep-plus"]) {
+                                 [self.pauseButton setHighlighted:NO];
+                                 [self.bliepButton setHighlighted:NO];
+                                 [self.bliepplusButton setHighlighted:YES];
+                             }
+                             self.balanceLabel.text = [NSString stringWithFormat:@"€ %@", [result objectForKey:@"balance"]];
+                             NSString *seconds = [NSString stringWithFormat:@"%@", [[result objectForKey:@"calltime"] objectForKey:@"seconds"]];
+                             if ([seconds length] == 1)
+                                 seconds = [@"0" stringByAppendingString:seconds];
+                             self.calltimeLabel.text = [NSString stringWithFormat:@"%@:%@", [[result objectForKey:@"calltime"] objectForKey:@"minutes"], seconds];
+                             [BliepAPI setAccountInfo:result];
+                             
+                             [loadingView removeFromSuperview];
+                         }
+                              onError:^(NSError *error) {
+                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Error: %d", [error code]]
+                                                                                  message:[error localizedDescription]
+                                                                                 delegate:nil
+                                                                        cancelButtonTitle:@"Ok"
+                                                                        otherButtonTitles:nil, nil];
+                                  [alert show];
+
+                              }];
 }
 
 -(IBAction)pause:(id)sender {
@@ -129,43 +135,49 @@
     [self.view addSubview:loadingView];
     
     __weak ViewController *weakSelf = self;
-    [self.api setStateWithState:@"pause" andToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
-        DLog(@"%@", dict);
-        BOOL succes = [[dict objectForKey:@"success"] boolValue];
-        if (succes == YES) {
-            // Update user info
-            [weakSelf getAccountInfo:sender];
-        }else {
-            // Get errorcode
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"%d", [[dict objectForKey:@"error_code"] integerValue]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-            
-        }
-
-        [loadingView removeFromSuperview];
     
-    }];
+    [self.api setStateWithState:@"pause"
+                       andToken:[BliepAPI getTokenFromUserDefaults]
+                   onCompletion:^(NSDictionary *dict) {
+                            // Update user info
+                            [weakSelf getAccountInfo:nil];
+                            [loadingView removeFromSuperview];
+                        }
+                        onError:^(NSError *error) {
+                            [loadingView removeFromSuperview];
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Error: %d", [error code]]
+                                                                            message:[error localizedDescription]
+                                                                           delegate:nil
+                                                                  cancelButtonTitle:@"Ok"
+                                                                  otherButtonTitles:nil, nil];
+                            [alert show];
+
+                        }];
 }
+
 -(IBAction)bliep:(id)sender {
     
     LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     [self.view addSubview:loadingView];
     
     __weak ViewController *weakSelf = self;
-    [self.api setStateWithState:@"bliep" andToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
-        DLog(@"%@", dict);
-        BOOL succes = [[dict objectForKey:@"success"] boolValue];
-        if (succes == YES) {
-            // Update user info
-            [weakSelf getAccountInfo:sender];
-        }else {
-            // Get errorcode
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"%d", [[dict objectForKey:@"error_code"] integerValue]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-            
-        }
-     
-        [loadingView removeFromSuperview];
-     
-    }];
+    [self.api setStateWithState:@"bliep"
+                       andToken:[BliepAPI getTokenFromUserDefaults]
+                   onCompletion:^(NSDictionary *dict) {
+                       // Update user info
+                       [weakSelf getAccountInfo:nil];
+                       [loadingView removeFromSuperview];
+                   }
+                        onError:^(NSError *error) {
+                            [loadingView removeFromSuperview];
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Error: %d", [error code]]
+                                                                            message:[error localizedDescription]
+                                                                           delegate:nil
+                                                                  cancelButtonTitle:@"Ok"
+                                                                  otherButtonTitles:nil, nil];
+                            [alert show];
+                            
+                        }];
 }
 
 -(IBAction)bliepplus:(id)sender {
@@ -174,21 +186,23 @@
     [self.view addSubview:loadingView];
     
     __weak ViewController *weakSelf = self;
-    [self.api setStateWithState:@"bliep-plus" andToken:[BliepAPI getTokenFromUserDefaults] andCompletionBlock:^(NSDictionary *dict) {
-        DLog(@"%@", dict);
-        BOOL succes = [[dict objectForKey:@"success"] boolValue];
-        if (succes == YES) {
-            // Update user info
-            [weakSelf getAccountInfo:sender];
-        }else {
-            // Get errorcode
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"%d", [[dict objectForKey:@"error_code"] integerValue]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-            
-        }
-     
-        [loadingView removeFromSuperview];
-     
-    }];
+    [self.api setStateWithState:@"bliep-plus"
+                       andToken:[BliepAPI getTokenFromUserDefaults]
+                   onCompletion:^(NSDictionary *dict) {
+                       // Update user info
+                       [weakSelf getAccountInfo:nil];
+                       [loadingView removeFromSuperview];
+                   }
+                        onError:^(NSError *error) {
+                            [loadingView removeFromSuperview];
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Error: %d", [error code]]
+                                                                            message:[error localizedDescription]
+                                                                           delegate:nil
+                                                                  cancelButtonTitle:@"Ok"
+                                                                  otherButtonTitles:nil, nil];
+                            [alert show];
+                            
+                        }];
 }
 
 @end

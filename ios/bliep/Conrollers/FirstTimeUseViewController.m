@@ -48,7 +48,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)login:(id)sender {
+- (IBAction)login:(id)sender {
     NSString *email = [self.emailTextField text];
     NSString *wachtwoord = [self.passwordTextField text];
     [self.emailTextField resignFirstResponder];
@@ -56,32 +56,31 @@
     
     LoadingView *loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     [self.view addSubview:loadingView];
-    
-    [self.api getTokenWithUsername:email andPassword:wachtwoord andCompletionBlock:^(NSDictionary *dict) {
-        DLog(@"%@", dict);
-        BOOL succes = [[dict objectForKey:@"success"] boolValue];
-        if (succes == YES){
-            // Save token
-            [BliepAPI setToken:[[dict objectForKey:@"result"] objectForKey:@"token"]];
-            ViewController *vc = [[ViewController alloc] init];
-            vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-            [self presentViewController:vc animated:YES completion:nil];
-        }else {
-            // Get errorcode
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                            message:[NSString stringWithFormat:@"%@", [dict objectForKey:@"error"]]
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil, nil];
-            [alert show];
-        }
-     
-        [loadingView removeFromSuperview];
-     
-    }];
+
+    [self.api getTokenWithUsername:email andPassword:wachtwoord
+                      onCompletion:^(NSDictionary *dict) {
+                          // Save token
+                          [BliepAPI setToken:[[dict objectForKey:@"result"] objectForKey:@"token"]];
+                          ViewController *vc = [[ViewController alloc] init];
+                          vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                          [self presentViewController:vc animated:YES completion:nil];
+                          
+                          [loadingView removeFromSuperview];
+                      } onError:^(NSError *error) {
+                          // Get errorcode
+                          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Error: %d", [error code]]
+                                                                          message:[error localizedDescription]
+                                                                         delegate:nil
+                                                                cancelButtonTitle:@"Ok"
+                                                                otherButtonTitles:nil, nil];
+                          [alert show];
+                          
+                          
+                          [loadingView removeFromSuperview];
+                      }];
 }
 
--(IBAction)next:(id)sender {
+- (IBAction)next:(id)sender {
     [self.passwordTextField becomeFirstResponder];
 }
 

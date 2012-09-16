@@ -30,7 +30,10 @@
 
 #pragma mark - API Calls
 
-- (void)getTokenWithUsername:(NSString *)username andPassword:(NSString *)password andCompletionBlock:(BliepTokenCompletionBlock)completionBlock {
+- (void)getTokenWithUsername:(NSString *)username
+                 andPassword:(NSString *)password
+                onCompletion:(BliepCompletionBlock)completionBlock
+                     onError:(BliepErrorBlock)errorBlock; {
     
     MKNetworkOperation *operation = [self.networkEngine operationWithPath:@"auth"
                                                                    params:[NSMutableDictionary dictionaryWithObjects:@[username, password]
@@ -42,17 +45,16 @@
         NSDictionary *dict = [completedOperation responseJSON];
         completionBlock(dict);
     } onError:^(NSError *error) {
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        [dict setObject:[NSNumber numberWithInteger:error.code] forKey:@"error_code"];
-        [dict setObject:error.localizedDescription forKey:@"error"];
-        [dict setObject:[NSNumber numberWithBool:NO] forKey:@"success"];
-        completionBlock(dict);
+        DLog(@"Error: %d %@: %@", [error code], [error domain], [error localizedDescription]);
+        errorBlock(error);
     }];
     
     [self.networkEngine enqueueOperation:operation];
     
 }
-- (void)getAccountInfoWithToken:(NSString *)token andCompletionBlock:(BliepTokenCompletionBlock)completionBlock {
+- (void)getAccountInfoWithToken:(NSString *)token
+                   onCompletion:(BliepCompletionBlock)completionBlock
+                        onError:(BliepErrorBlock)errorBlock; {
     MKNetworkOperation *operation = [self.networkEngine operationWithPath:@"account"
                                                                    params:[NSMutableDictionary dictionaryWithObjects:@[token] forKeys:@[@"token"]]
                                                                httpMethod:@"GET" ssl:YES];
@@ -61,14 +63,18 @@
         NSDictionary *dict = [completedOperation responseJSON];
         completionBlock(dict);
     } onError:^(NSError *error) {
-        DLog(@"%@: %@", error, [error localizedDescription]);
+        DLog(@"Error: %d %@: %@", [error code], [error domain], [error localizedDescription]);
+        errorBlock(error);
     }];
     
     [self.networkEngine enqueueOperation:operation];
     
 }
 
--(void)setStateWithState:(NSString *)state andToken:(NSString *)token andCompletionBlock:(BliepTokenCompletionBlock)completionBlock {
+-(void)setStateWithState:(NSString *)state
+                andToken:(NSString *)token
+            onCompletion:(BliepCompletionBlock)completionBlock
+                 onError:(BliepErrorBlock)errorBlock; {
     
     MKNetworkOperation *operation = [self.networkEngine operationWithPath:[NSString stringWithFormat:@"account/state/%@", state]
                                                                    params:[NSMutableDictionary dictionaryWithObjects:@[token] forKeys:@[@"token"]]
@@ -78,7 +84,8 @@
         NSDictionary *dict = [completedOperation responseJSON];
         completionBlock(dict);
     } onError:^(NSError *error) {
-        DLog(@"%@: %@", error, [error localizedDescription]);
+        DLog(@"Error: %d %@: %@", [error code], [error domain], [error localizedDescription]);
+        errorBlock(error);
     }];
     
     [self.networkEngine enqueueOperation:operation];

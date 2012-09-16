@@ -38,7 +38,7 @@
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
-    self.highlighted = highlighted;
+    _highlighted = highlighted;
     
     //Title label color
     if (highlighted) {
@@ -51,6 +51,7 @@
     
     [self setNeedsDisplay];
     
+    [super setHighlighted:highlighted];
 }
 
 - (void)setEnabled:(BOOL)enabled {
@@ -59,6 +60,8 @@
     } else {
         [self.titleLabel setTextColor:normalTextColor];
     }
+    
+    [super setEnabled:enabled];
 }
 
 - (void)drawRect:(CGRect)rect

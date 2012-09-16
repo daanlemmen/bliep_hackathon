@@ -14,13 +14,23 @@ typedef enum {
     BliepConnectionTypeChangeAccountState,
 } BliepConnectionType;
 
-typedef void(^BliepTokenCompletionBlock)(NSDictionary *dict);
+typedef void(^BliepCompletionBlock)(NSDictionary *dict);
+typedef void(^BliepErrorBlock)(NSError *error);
 
 @interface BliepAPI : NSObject <NSURLConnectionDataDelegate>
 
-- (void)getTokenWithUsername:(NSString *)username andPassword:(NSString *)password andCompletionBlock:(BliepTokenCompletionBlock)completionBlock;
-- (void)getAccountInfoWithToken:(NSString *)token andCompletionBlock:(BliepTokenCompletionBlock)completionBlock;
-- (void)setStateWithState:(NSString *)state andToken:(NSString *)token andCompletionBlock:(BliepTokenCompletionBlock)completionBlock;
+- (void)getTokenWithUsername:(NSString *)username
+                 andPassword:(NSString *)password
+                onCompletion:(BliepCompletionBlock)completionBlock
+                     onError:(BliepErrorBlock)errorBlock;
+
+- (void)getAccountInfoWithToken:(NSString *)token
+                   onCompletion:(BliepCompletionBlock)completionBlock
+                        onError:(BliepErrorBlock)errorBlock;
+
+- (void)setStateWithState:(NSString *)state andToken:(NSString *)token
+             onCompletion:(BliepCompletionBlock)completionBlock
+                  onError:(BliepErrorBlock)errorBlock;
 
 + (NSString *)getTokenFromUserDefaults;
 + (void)setToken:(NSString *)token;
